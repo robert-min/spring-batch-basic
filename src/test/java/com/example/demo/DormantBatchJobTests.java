@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import com.example.demo.batch.BatchStatus;
+import com.example.demo.batch.Job;
 import com.example.demo.batch.JobExecution;
 import com.example.demo.customer.Customer;
 import com.example.demo.customer.CustomerRepository;
@@ -22,7 +23,7 @@ public class DormantBatchJobTests {
     private CustomerRepository customerRepository;
 
     @Autowired
-    private DormantBatchJob dormantBatchJob;
+    private Job dormantBatchJob;
 
     @BeforeEach
     public void setUp() {
@@ -87,7 +88,7 @@ public class DormantBatchJobTests {
     @DisplayName("배치가 실패하면 BatchStatus는 FAILED를 반환")
     void test4() {
         // given
-        final DormantBatchJob dormantBatchJob = new DormantBatchJob(null);
+        final Job dormantBatchJob = new Job(null, null);
 
         // when
         final JobExecution jobExecution = dormantBatchJob.execute();
