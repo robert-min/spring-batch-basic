@@ -9,7 +9,16 @@ import com.example.demo.batch.Job;
 public class DormantBatchConfiguraion {
     
     @Bean
-    public Job dormantBatchJob(DormantBatchTasklet dormantBatchTasklet, DormantBatchJobExecutionListener dormantBatchJobExecutionListener) {
-        return new Job(dormantBatchTasklet, dormantBatchJobExecutionListener);
+    public Job dormantBatchJob(
+        DormantBatchItemReader itemReader,
+        DormantBatchItemProcessor itemProcessor,
+        DormantBatchItemWriter itemWriter,
+        DormantBatchJobExecutionListener jobExecutionListener) {
+        return Job.builder()
+                .itemReader(itemReader)
+                .itemProcessor(itemProcessor)
+                .itemWriter(itemWriter)
+                .jobExecutionListener(jobExecutionListener)
+                .build();
     }
 }
