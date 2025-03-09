@@ -4,12 +4,13 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 import com.example.demo.batch.Job;
+import com.example.demo.batch.TaskletJob;
 
 @Configuration
 public class DormantBatchConfiguraion {
     
     @Bean
-    public Job dormantBatchJob(
+    public TaskletJob dormantBatchJob(
         DormantBatchItemReader itemReader,
         DormantBatchItemProcessor itemProcessor,
         DormantBatchItemWriter itemWriter,

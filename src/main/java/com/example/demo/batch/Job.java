@@ -5,7 +5,7 @@ import java.time.LocalDateTime;
 import java.util.Objects;
 
 
-public class Job {
+public class Job implements TaskletJob {
 
     private final Tasklet tasklet;
     private final JobExecutionListener jobExecutionListener;
@@ -32,6 +32,7 @@ public class Job {
         });
     }
 
+    @Override
     public JobExecution execute() {
 
         final JobExecution jobExecution = new JobExecution();
